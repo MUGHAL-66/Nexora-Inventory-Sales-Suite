@@ -72,6 +72,11 @@ def apply_theme() -> None:
         [data-testid="stMainBlockContainer"] {
             max-width: 1480px;
             padding: 2rem 2.25rem 3rem;
+            min-width: 0;
+        }
+        [data-testid="stAppViewContainer"], [data-testid="stMain"], [data-testid="stMainBlockContainer"] {
+            min-width: 0;
+            max-width: 100%;
         }
         h1, h2, h3, h4 {
             color: var(--nx-ink) !important;
@@ -489,7 +494,11 @@ def apply_theme() -> None:
         }
         [data-testid="stDataFrame"],
         [data-testid="stTable"] {
-            overflow: hidden;
+            min-width: 0;
+            max-width: 100%;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
             background: var(--nx-surface);
             border: 1px solid var(--nx-border);
             border-radius: 13px;
@@ -512,6 +521,8 @@ def apply_theme() -> None:
             font-size: 11px;
         }
         [data-testid="stPlotlyChart"] {
+            min-width: 0;
+            max-width: 100%;
             padding: 9px 10px 4px;
             background: var(--nx-surface);
             border: 1px solid var(--nx-border);
@@ -707,16 +718,56 @@ def apply_theme() -> None:
             [data-testid="stForm"] { padding: 1rem; }
             .st-key-login_panel { padding: 1.35rem; }
             .st-key-login_brand { min-height: 450px; padding: 2rem; }
+            [data-testid="stHorizontalBlock"] {
+                flex-wrap: wrap !important;
+                align-items: stretch;
+                row-gap: .8rem;
+                column-gap: 1rem;
+            }
+            [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+                flex: 0 0 calc(50% - .5rem) !important;
+                width: calc(50% - .5rem) !important;
+                min-width: 0 !important;
+            }
+            [data-testid="stHorizontalBlock"] > [data-testid="stColumn"]:only-child {
+                flex-basis: 100% !important;
+                width: 100% !important;
+            }
+            [data-testid="stTabs"] [data-baseweb="tab-list"] {
+                max-width: 100%;
+                overflow-x: auto;
+                overscroll-behavior-x: contain;
+                scrollbar-width: thin;
+            }
+            [data-testid="stTabs"] [data-baseweb="tab"] { flex: 0 0 auto; }
         }
         @media (max-width: 600px) {
             [data-testid="stMainBlockContainer"] { padding-left: .75rem; padding-right: .75rem; }
             .nx-brand { padding-bottom: 16px; }
             .nx-chart-empty { min-height: 210px; }
-            .st-key-login_brand { min-height: 300px; padding: 1.5rem; }
+            .st-key-login_brand { min-height: 260px; padding: 1.5rem; }
             .st-key-login_brand h1 { font-size: 31px !important; }
             .nx-login-brand { margin-bottom: 1.4rem; }
             .nx-login-brand-footer { margin-top: 1.5rem; }
             .st-key-login_panel { padding: 1.25rem; }
+            [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+                flex-basis: 100% !important;
+                width: 100% !important;
+            }
+            .st-key-login_layout [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+                flex: 1 1 100% !important;
+                width: 100% !important;
+            }
+            .st-key-dashboard_metrics [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+                flex: 0 0 calc(50% - .5rem) !important;
+                width: calc(50% - .5rem) !important;
+            }
+            .nx-order-summary {
+                text-align: left;
+                line-height: 1.8;
+                overflow-wrap: anywhere;
+            }
+            [data-testid="stDataFrame"], [data-testid="stTable"] { font-size: 10px; }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *:before, *:after {

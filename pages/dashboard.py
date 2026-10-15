@@ -128,9 +128,10 @@ def render_dashboard(connection: Any, user: dict[str, Any], products_page: Any) 
     metrics = data["metrics"]
     can_view_sales_financials = role_has_permission(user["role"], SALES_FINANCIALS)
     cards = _build_metric_cards(metrics, user["role"])
-    for column, (label, value, note) in zip(st.columns(len(cards)), cards):
-        with column:
-            render_kpi_card(label, value, note)
+    with st.container(key="dashboard_metrics"):
+        for column, (label, value, note) in zip(st.columns(len(cards)), cards):
+            with column:
+                render_kpi_card(label, value, note)
 
     st.markdown('<div class="nx-section-spacer"></div>', unsafe_allow_html=True)
     trend_col, top_col = st.columns(2)

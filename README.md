@@ -6,7 +6,7 @@ A Python 3.12+ inventory and sales application built with Streamlit and MySQL 8+
 
 Verified in the workspace:
 
-- Streamlit app shell, light maroon-and-rose-gold enterprise theme, and role-aware navigation
+- Streamlit app shell, light maroon-and-rose-gold enterprise theme, role-aware navigation, and device-adaptive sidebar state
 - Authentication with bcrypt hashing and active-user revalidation
 - Admin, Manager, Sales Staff, and Staff account roles with distinct role labels and centralized permissions; Managers have operational supplier, inventory-history, and purchase workflows, while Sales Staff keeps a focused sales workspace and Staff retains its existing limited access
 - Product/category management, customer/supplier management, and audited stock adjustments
@@ -19,7 +19,7 @@ Reporting and settings are not registered routes in the current application; thi
 
 ## Included foundation
 
-- Streamlit entry point and reusable light workspace, maroon sidebar, rose-gold accent, and two-panel sign-in design system.
+- Streamlit entry point and reusable responsive layout with a light workspace, maroon sidebar, rose-gold accents, and a two-panel sign-in that stacks on narrow screens.
 - Environment-driven MySQL configuration, validated database identifiers, connection lifecycle management, and safe schema initialization.
 - Normalized MySQL schema for users, categories, products, customers, suppliers, sales, sale items, purchases, purchase items, payments, and auditable stock transactions.
 - Opt-in, idempotent sample category and products with unmistakable `[DEMO]` labels.

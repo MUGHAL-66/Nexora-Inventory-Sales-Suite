@@ -32,7 +32,7 @@ st.set_page_config(
     page_title="Nexora | Inventory & Sales Suite",
     page_icon="N",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="auto",
 )
 
 _PAGE_RENDERERS: dict[str, Callable[..., None]] = {
